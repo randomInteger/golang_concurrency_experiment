@@ -24,7 +24,7 @@ goroutine: 12  square of: 31999 is: 1023936001\
 \
 real	0m2.658s\
 user	0m1.413s\
-sys	0m1.618s\
+sys	0m1.618s
 
 # example output with very small values...
 $./golang_concurrency_experiment 6 6\
