@@ -16,8 +16,11 @@ output is not sequential between threads.
 Author:  c.gleeson 2018
 */
 package main
+import "os"
 import "fmt"
+import "log"
 import "sync"
+import "strconv"
 
 //A simple goroutine that computes squares and prints them
 //Calls:  wg.Done() when finished so the main routine can resume.
@@ -32,10 +35,21 @@ func squares(n int, thread_num int, wg *sync.WaitGroup) {
 }
 
 func main(){
+    //grab args 0=program path 1=first arg 2=2nd arg...
+    args := os.Args[:]
+    //Expect the following usage
+    //Arg1:  number of threads
+    //Arg2:  N where we compute all squares in range(0,N)
     //Define the max number of threads
-    NUM_THREADS := 16
+    NUM_THREADS, err := strconv.Atoi(args[1])
+    if err != nil {
+        log.Fatal(err)
+    }
     //Define the range of values to square from 0 to N-1
-    RANGE := 64
+    RANGE, err := strconv.Atoi(args[2])
+    if err != nil {
+        log.Fatal(err)
+    }
     //Form a waitgroup
     var wg sync.WaitGroup
 
