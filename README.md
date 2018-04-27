@@ -3,6 +3,8 @@ A very quick example of how to launch multiple independent goroutines and wait f
 
 goroutine:  a lightweight thread managed by the Go runtime.
 
+<img src="https://github.com/randomInteger/golang_concurrency_experiment/blob/master/go.png" width="200" heighth="400">
+
 # install golang
 https://golang.org/dl/
 
