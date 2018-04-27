@@ -27,11 +27,11 @@ import "strconv"
 //Takes:  N is the range(0, N), and goroutine int is the goroutine number for example
 //purposes.
 func squares(n int, goroutine_num int, wg *sync.WaitGroup) {
+    defer wg.Done()
     for i := 0; i < n; i ++ {
         sq := i * i
         fmt.Println("goroutine:", goroutine_num, " square of:", i , "is:", sq)
     }
-    defer wg.Done()
 }
 
 func main(){
