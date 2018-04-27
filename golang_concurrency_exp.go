@@ -10,8 +10,8 @@ can easily exit before the goroutines have finished doing their work.
 2)  Pass in a pointer to the WaitGroup to the func that will be called
 as a goroutine
 
-3)  Observe that the threads are subject to the whims of a scheduler and the
-output is not sequential between threads.
+3)  Observe that the goroutines are subject to the whims of a scheduler and the
+output is not sequential between goroutines.
 
 Author:  c.gleeson 2018
 */
@@ -24,12 +24,12 @@ import "strconv"
 
 //A simple goroutine that computes squares and prints them
 //Calls:  wg.Done() when finished so the main routine can resume.
-//Takes:  N is the range(0, N), and thread int is the thread number for example
+//Takes:  N is the range(0, N), and goroutine int is the goroutine number for example
 //purposes.
-func squares(n int, thread_num int, wg *sync.WaitGroup) {
+func squares(n int, goroutine_num int, wg *sync.WaitGroup) {
     for i := 0; i < n; i ++ {
         sq := i * i
-        fmt.Println("Thread:", thread_num, " square of:", i , "is:", sq)
+        fmt.Println("goroutine:", goroutine_num, " square of:", i , "is:", sq)
     }
     defer wg.Done()
 }
@@ -38,10 +38,10 @@ func main(){
     //grab args 0=program path 1=first arg 2=2nd arg...
     args := os.Args[:]
     //Expect the following usage
-    //Arg1:  number of threads
+    //Arg1:  number of goroutines
     //Arg2:  N where we compute all squares in range(0,N)
-    //Define the max number of threads
-    NUM_THREADS, err := strconv.Atoi(args[1])
+    //Define the max number of goroutines
+    NUM_GOROUTINES, err := strconv.Atoi(args[1])
     if err != nil {
         log.Fatal(err)
     }
@@ -53,7 +53,7 @@ func main(){
     //Form a waitgroup
     var wg sync.WaitGroup
 
-    for i := 0; i < NUM_THREADS; i++ {
+    for i := 0; i < NUM_GOROUTINES; i++ {
         wg.Add(1) //Populate the waitgroup with the correct num of goroutines
         go squares(RANGE, i, &wg)
     }
