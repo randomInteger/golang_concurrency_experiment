@@ -33,7 +33,7 @@ func squares(n int, thread_num int, wg *sync.WaitGroup) {
 
 func main(){
     //Define the max number of threads
-    NUM_THREADS := 64
+    NUM_THREADS := 16
     //Define the range of values to square from 0 to N-1
     RANGE := 64
     //Form a waitgroup
