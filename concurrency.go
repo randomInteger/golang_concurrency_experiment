@@ -1,5 +1,5 @@
 /*
-Trying to learn threads....
+Trying to learn goroutines....
 
 Observations:
 
@@ -19,7 +19,8 @@ package main
 import "fmt"
 import "sync"
 
-//A simple function that computes squares and prints them
+//A simple goroutine that computes squares and prints them
+//Calls:  wg.Done() when finished so the main routine can resume.
 //Takes:  N is the range(0, N), and thread int is the thread number for example
 //purposes.
 func squares(n int, thread_num int, wg *sync.WaitGroup) {
@@ -37,10 +38,9 @@ func main(){
     RANGE := 64
     //Form a waitgroup
     var wg sync.WaitGroup
-    wg.Add(NUM_THREADS)
 
-    fmt.Println("start")
     for i := 0; i < NUM_THREADS; i++ {
+        wg.Add(1) //Populate the waitgroup with the correct num of goroutines
         go squares(RANGE, i, &wg)
     }
     wg.Wait()
