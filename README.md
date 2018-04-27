@@ -1,5 +1,5 @@
 # golang_concurrency_experiment
-A very quick example of how to launch multiple independent goroutines and wait for them to finish
+A very quick experiment in how to launch multiple independent goroutines and wait for them to finish
 
 goroutine:  a lightweight thread managed by the Go runtime.
 
