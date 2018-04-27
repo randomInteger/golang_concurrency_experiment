@@ -2,10 +2,10 @@
 A very quick example of how to launch multiple independent goroutines and wait for them to finish
 
 # build it
-$go build\
+$go build
 
 # run it
-$./golang_concurrency_experiment <num_goroutines> <max range from 0 to compute>\
+$./golang_concurrency_experiment <num_goroutines> <max range from 0 to compute>
 
 # example output with very small values...
 $./golang_concurrency_experiment 6 6\
