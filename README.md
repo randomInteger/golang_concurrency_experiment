@@ -13,7 +13,7 @@ $go build
 $./golang_concurrency_experiment <num_goroutines> <max range from 0 to compute>
 
 # example of runtime on a MBP15/i7 computing all squares up to 32,000 on 16 threads
-time ./golang_concurrency_experiment 16 32000\
+$time ./golang_concurrency_experiment 16 32000\
 ...\
 goroutine: 12  square of: 31994 is: 1023616036\
 goroutine: 12  square of: 31995 is: 1023680025\
