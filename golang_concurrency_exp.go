@@ -13,6 +13,13 @@ as a goroutine
 3)  Observe that the goroutines are subject to the whims of a scheduler and the
 output is not sequential between goroutines.
 
+Things to add:
+
+1.  Better input argument handling, current one is stupid dangerous
+2.  Go should be able to get timer data for each thread and give me info about
+that, need to figure that out.
+3.  Could we easily visualize these threads in some way?
+
 Author:  c.gleeson 2018
 */
 package main
